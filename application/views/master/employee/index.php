@@ -4,13 +4,12 @@
   <!-- Page Heading -->
   <div class="d-flex w-100 align-items-center">
     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-      <h1 class="h3 mb-0 text-gray-800"><?= $title; ?></h1>
+      <h1 class="h3 mb-0 text-gray-800 font-weight-bold"><?= $title; ?></h1>
     </div>
-    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 text-right">
-      <a href="<?= base_url('master/a_employee'); ?>"
-        class="btn btn-primary btn-sm bg-gradient-primary rounded-0 btn-icon-split mb-0">
-        <span class="icon text-white-600">
-          <i class="fas fa-plus-circle"></i>
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 justify-content-end d-flex align-items-center">
+      <a href="<?= base_url('master/a_employee'); ?>" class="btn btn-primary btn-sm rounded-pill shadow-sm py-2 px-3">
+        <span class="icon mr-2">
+          <i class="fas fa-user-plus"></i>
         </span>
         <span class="text">Add New Employee</span>
       </a>
@@ -25,8 +24,11 @@
 
   <!-- Data Table employee-->
   <div class="card rounded-0 shadow mb-4">
-    <div class="card-header py-3">
-      <h6 class="m-0 font-weight-bold text-dark">DataTables Employee</h6>
+    <div class="card-header py-3 bg-primary">
+      <h6 class="m-0 font-weight-bold text-white">
+        <i class="fas fa-users mr-2"></i> <!-- Font Awesome icon -->
+        Employee Table
+      </h6>
     </div>
     <div class="card-body">
       <div class="table-responsive">
@@ -42,7 +44,7 @@
             <col width="15%">
             <col width="10%">
           </colgroup>
-          <thead>
+          <thead style=" text-align: center;">
             <tr>
               <th>#</th>
               <th>ID</th>
@@ -56,7 +58,7 @@
             </tr>
           </thead>
 
-          <tbody>
+          <tbody style=" text-align: center;">
             <?php
             $i = 1;
             foreach ($employee as $emp):
@@ -71,8 +73,10 @@
                     style="width: 3em; height:3em;object-fit:cover;object-position:center center; border-width: 3px !important;"
                     class="img-rounded border rounded-circle"></td>
                 <td class=" align-middle"><?= $emp['name']; ?></td>
-                <td class=" align-middle text-xs text-center"><?= date("h:i A", strtotime('2022-06-23 ' . $emp['start'])) ?>
-                  - <?= date("h:i A", strtotime('2022-06-23 ' . $emp['end'])) ?></td>
+                <td class=" align-middle text-xs text-center">
+                  <?= date("h:i A", strtotime('2022-06-23 ' . $emp['start'])) ?>
+                  - <?= date("h:i A", strtotime('2022-06-23 ' . $emp['end'])) ?>
+                </td>
                 <td class=" align-middle"><?php if ($emp['gender'] == 'M') {
                   echo 'Male';
                 } else {

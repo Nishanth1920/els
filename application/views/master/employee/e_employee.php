@@ -29,7 +29,9 @@
       </div>
       <div class="col-lg-6">
         <div class="card rounded-0 shadow">
-          <h5 class="card-header">Employee Master Data</h5>
+          <div class="card-header bg-primary text-white">
+            <h5>Employee Master Data</h5>
+          </div>
           <div class="card-body">
             <h5 class="card-title">Edit Employee</h5>
             <p class="card-text">Form to edit employee in system</p>
@@ -131,7 +133,7 @@
               </div>
             </div>
             <button type="submit"
-              class="btn btn-sm btn-primary bg-gradient-primary btn-icon-split mt-4 float-right rounded-0">
+              class="btn btn-sm btn-primary bg-primary btn-icon mt-4 float-right rounded-0">
               <span class="icon text-white">
                 <i class="fas fa-check"></i>
               </span>

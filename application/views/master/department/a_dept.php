@@ -13,7 +13,9 @@
         <div class="row justify-content-center">
           <form action="" method="POST" class="col-lg-5 col-md-6 col-sm-12  p-0">
             <div class="card rounded-0">
-              <h5 class="card-header">Department Master Data</h5>
+              <div class="card-header bg-primary text-white">
+              <h5>Department Master Data</h5>
+              </div>
               <div class="card-body">
                 <h5 class="card-title">Add New Department</h5>
                 <p class="card-text">Form to add new department to system</p>
@@ -29,7 +31,7 @@
                     <input type="text" class="form-control form-control-lg" name="d_name" id="d_name" value="<?= !empty($this->input->post('d_id')) ? $this->input->post('d_name') : '' ?>">
                     <?= form_error('d_name', '<small class="text-danger">', '</small>') ?>
                   </div>
-                  <button type="submit" class="btn btn-sm btn-primary bg-gradient-primary btn-icon-split mt-4 float-right rounded-0">
+                  <button type="submit" class="btn btn-sm btn-primary bg-primary btn-icon mt-4 float-right rounded-0">
                     <span class="icon text-white">
                       <i class="fas fa-plus-circle"></i>
                     </span>

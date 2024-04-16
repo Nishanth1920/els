@@ -1,12 +1,12 @@
 <!-- Sidebar -->
-<ul class="navbar-nav bg-gradient-dark sidebar sidebar-dark accordion" id="accordionSidebar">
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
   <!-- Sidebar - Brand -->
   <a class="sidebar-brand d-flex align-items-center justify-content-center" href="">
     <div class="sidebar-brand-icon">
       <img src="/els/assets/img/star.jpeg" alt="" class="img-thumbnail rounded-circle border-3 p-0" id="system-logo">
     </div>
-    <div class="sidebar-brand-text mx-3 text-uppercase">E A M S</div>
+    <div class="sidebar-brand-text mx-3 text-lowercase">ner<span class="text-uppercase">x</span>pire</div>
   </a>
 
   <!-- Query Menu -->
@@ -73,13 +73,13 @@
     <li class="nav-item">
       <a class="nav-link btn btn-link p-1 px-3 py-2" href="<?= base_url('leave/leaveRequests'); ?>">
         <i class="fa fa-share"></i>
-        <span>Leave Requests</span>
+        <span>Pending Requests</span>
       </a>
     </li>
     <li class="nav-item">
       <a class="nav-link btn btn-link p-1 px-3" href="<?php echo base_url('leave/admin_history'); ?>">
         <i class="fa fa-history"></i>
-        <span>Leave History</span>
+        <span>History</span>
       </a>
     </li>
     <hr class="sidebar-divider mt-3">

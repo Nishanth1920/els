@@ -3,7 +3,7 @@
   <!-- Page Heading -->
   <div class="d-flex w-100 align-items-center">
     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-      <h1 class="h3 mb-0 text-gray-800"><?= $title; ?></h1>
+      <h1 class="h3 mb-0 text-gray-800 font-weight-bold"><?= $title; ?></h1>
     </div>
     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 text-right">
       <a href="<?= base_url('admin') ?>" class="btn btn-md btn-light btn-sm bg-gradient-light border rounded-0 mb-2 btn-icon-split">
@@ -40,7 +40,7 @@
 
             </div>
             <div class="col-2">
-              <button type="submit" class="btn btn-primary btn-sm rounded-0 bg-gradient-primary "><i class="fa fa-file"></i> Show Report</button>
+              <button type="submit" class="btn btn-primary btn-sm rounded-0 bg-primary "><i class="fa fa-file"></i> Show Report</button>
             </div>
           </div>
         </form>

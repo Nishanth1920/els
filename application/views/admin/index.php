@@ -3,7 +3,7 @@
 
   <!-- Page Heading -->
   <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800"><?= $title; ?></h1>
+    <h1 class="h3 mb-0 text-gray-800 font-weight-bold"><?= $title; ?></h1>
   </div>
 
   <!-- Content Row -->
@@ -122,30 +122,31 @@
     <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
       <!-- Pie Chart -->
       <div class="col p-0">
-        <div class="card shadow mb-4 rounded-0">
+        <div class="card shadow mb-4 rounded-0 ">
           <!-- Card Header - Dropdown -->
-          <div class="card-header py-3 d-flex flex-rowz align-items-center justify-content-between">
-            <h6 class="m-0 font-weight-bold text-muted">Departments' Employees</h6>
+          <div
+            class="card-header py-3 d-flex flex-rowz align-items-center justify-content-between bg-primary text-white">
+            <h6 class="m-0 font-weight-bold">Departments' Employees</h6>
             <a class="text-reset font-weight-bolder text-muted" title="Go to Department List"
               href="<?= base_url('admin') ?>"><i class="fa fa-arrow-right"></i></a>
           </div>
           <!-- Card Body -->
           <div class="card-body overflow-auto" style="max-height: 400px;">
             <table class="table table-bordered table-striped">
-              <thead class="bg-gradient-primary text-white">
+              <thead class="text-dark" style=" text-align: center;">
                 <tr>
                   <th class="text-center p-1" scope="col">#</th>
                   <th class="p-1" scope="col">Dept Code</th>
                   <th class="p-1" scope="col">Employees</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody style=" text-align: center;">
                 <?php $i = 1;
                 foreach ($d_list as $d): ?>
                   <tr>
                     <th class="text-center p-1" scope="row"><?= $i++ ?></th>
                     <td class="p-1"><?= $d['d_id'] ?></td>
-                    <td class="p-1 text-right"><?= number_format($d['qty']) ?></td>
+                    <td class="p-1"><?= number_format($d['qty']) ?></td>
                   </tr>
                 <?php endforeach; ?>
               </tbody>
@@ -158,20 +159,21 @@
       <div class="col p-0">
         <div class="card shadow mb-4 rounded-0">
           <!-- Card Header - Dropdown -->
-          <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-            <h6 class="m-0 font-weight-bold text-muted">Employees per Shift</h6>
+          <div
+            class="card-header py-3 d-flex flex-row align-items-center justify-content-between bg-primary text-white">
+            <h6 class="m-0 font-weight-bold">Employees per Shift</h6>
           </div>
           <!-- Card Body -->
           <div class="card-body" style="max-height: 370px;">
-            <table class="table table-bordered table-striped">
-              <thead class="bg-gradient-primary text-white">
+            <table class="table table-bordered table-striped ">
+              <thead class="text-dark" style=" text-align: center;">
                 <tr>
                   <th class="text-center p-1" scope="col">#</th>
                   <th class="p-1" scope="col">Shift</th>
                   <th class="p-1" scope="col">Employees</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody style=" text-align: center;">
                 <?php $i = 1;
                 foreach ($s_list as $s): ?>
                   <?php if ($s['s_id'] == 0) {
@@ -184,7 +186,7 @@
                       <small>(<?= date('h:i A', strtotime("2022-06-23" . $s['start'])) ?> -
                         <?= date('h:i A', strtotime("2022-06-23" . $s['end'])) ?>)</small>
                     </td>
-                    <td class="p-1 text-right"><?= number_format($s['qty']) ?></td>
+                    <td class="p-1"><?= number_format($s['qty']) ?></td>
                   </tr>
                 <?php endforeach; ?>
               </tbody>

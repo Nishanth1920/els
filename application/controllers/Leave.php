@@ -73,7 +73,7 @@ class Leave extends CI_Controller
 
     public function leaveRequests()
     {
-        $d['title'] = 'Department';
+        $d['title'] = 'Leave Requests';
         $d['department'] = $this->db->get('department')->result_array();
         $d['account'] = $this->Admin_model->getAdmin($this->session->userdata('username'));
         $dd['pending_leave_requests_count'] = $this->Admin_model->getPendingLeaveRequestsCount();
@@ -123,14 +123,14 @@ class Leave extends CI_Controller
             $this->load->model('Leave_model');
 
             $data['leave_history'] = $this->Leave_model->get_user_leave_history($employee_id);
-            $d['title'] = 'My Leave History';
+            $d['title'] = 'Leave History';
             $d['account'] = $this->Admin_model->getAdmin($username);
             $dd['pending_leave_requests_count'] = $this->Admin_model->getPendingLeaveRequestsCount();
 
 
             $this->load->view('templates/table_header', $d);
             $this->load->view('templates/sidebar');
-            $this->load->view('templates/topbar',$dd);
+            $this->load->view('templates/topbar', $dd);
             $this->load->view('master/leave/user_history', $data);
             $this->load->view('templates/table_footer');
         } else {

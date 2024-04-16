@@ -1,14 +1,21 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
+  <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+    <h1 class="h3 mb-0 text-gray-800 font-weight-bold"><?= $title; ?></h1>
+  </div>
+  <hr>
   <!-- Page Heading -->
   <!-- Data Table Users-->
   <div class="card shadow mb-4">
-    <div class="card-header bg-dark py-3">
-      <h6 class="m-0 font-weight-bold text-light">Leave Requests</h6>
+    <div class="card-header bg-primary py-3">
+      <h6 class="m-0 font-weight-bold text-light">
+        <i class="fas fa-calendar-alt mr-2"></i> <!-- Font Awesome icon -->
+        Leave Requests Table
+      </h6>
     </div>
     <div class="card-body">
       <div class="table-responsive">
-        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
           <thead style="text-align: center;">
             <tr>
               <th>#</th>
@@ -29,7 +36,9 @@
                 <td><?= $index + 1; ?></td>
                 <td><?= $request['staff_id']; ?></td>
                 <td>
-                  <div class="d-flex align-items-center" style="style="width: 40px; height: 40px; border: 2px solid #ccc; border-radius: 50%; overflow: hidden; margin-right: 8px; display: flex; justify-content: center; align-items: center;"" >
+                  <div class="d-flex align-items-center" style="style=" width: 40px; height: 40px; border: 2px solid #ccc;
+                    border-radius: 50%; overflow: hidden; margin-right: 8px; display: flex; justify-content: center;
+                    align-items: center;"">
                     <img src="/els/images/pp/<?= $request['profile_picture']; ?>" alt="Profile Picture"
                       class="rounded-circle mr-2" style="width: 35px; height: 35px;">
                     <?= $request['name']; ?>

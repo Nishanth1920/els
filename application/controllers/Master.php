@@ -22,7 +22,7 @@ class Master extends CI_Controller
 
     $this->load->view('templates/table_header', $d);
     $this->load->view('templates/sidebar');
-    $this->load->view('templates/topbar',$dd);
+    $this->load->view('templates/topbar', $dd);
     $this->load->view('master/department/index', $d); // Department Page
     $this->load->view('templates/table_footer');
   }
@@ -42,7 +42,7 @@ class Master extends CI_Controller
     }
     $this->load->view('templates/header', $d);
     $this->load->view('templates/sidebar');
-    $this->load->view('templates/topbar',$dd);
+    $this->load->view('templates/topbar', $dd);
     $this->load->view('master/department/a_dept', $d); // Add Department Page
     $this->load->view('templates/footer');
   }
@@ -80,7 +80,7 @@ class Master extends CI_Controller
     if ($this->form_validation->run() == false) {
       $this->load->view('templates/header', $d);
       $this->load->view('templates/sidebar');
-      $this->load->view('templates/topbar',$dd);
+      $this->load->view('templates/topbar', $dd);
       $this->load->view('master/department/e_dept', $d); // Edit Department Page
       $this->load->view('templates/footer');
     } else {
@@ -115,7 +115,7 @@ class Master extends CI_Controller
 
     $this->load->view('templates/table_header', $d);
     $this->load->view('templates/sidebar');
-    $this->load->view('templates/topbar',$dd);
+    $this->load->view('templates/topbar', $dd);
     $this->load->view('master/shift/index', $d); // shift Page
     $this->load->view('templates/table_footer');
   }
@@ -143,7 +143,7 @@ class Master extends CI_Controller
 
     $this->load->view('templates/header', $d);
     $this->load->view('templates/sidebar');
-    $this->load->view('templates/topbar',$dd);
+    $this->load->view('templates/topbar', $dd);
     $this->load->view('master/shift/a_shift', $d); // Add shift Page
     $this->load->view('templates/footer');
   }
@@ -223,7 +223,7 @@ class Master extends CI_Controller
     }
     $this->load->view('templates/header', $d);
     $this->load->view('templates/sidebar');
-    $this->load->view('templates/topbar',$dd);
+    $this->load->view('templates/topbar', $dd);
     $this->load->view('master/shift/e_shift', $d); // Edit shift Page
     $this->load->view('templates/footer');
   }
@@ -257,7 +257,7 @@ class Master extends CI_Controller
 
     $this->load->view('templates/table_header', $d);
     $this->load->view('templates/sidebar');
-    $this->load->view('templates/topbar',$dd);
+    $this->load->view('templates/topbar', $dd);
     $this->load->view('master/employee/index', $d); // Employee Page
     $this->load->view('templates/table_footer');
   }
@@ -284,7 +284,7 @@ class Master extends CI_Controller
     }
     $this->load->view('templates/header', $d);
     $this->load->view('templates/sidebar');
-    $this->load->view('templates/topbar',$dd);
+    $this->load->view('templates/topbar', $dd);
     $this->load->view('master/employee/a_employee', $d); // Add Employee Page
     $this->load->view('templates/footer');
   }
@@ -359,7 +359,7 @@ class Master extends CI_Controller
   }
 
   public function e_employee($e_id)
-{
+  {
     $d['title'] = 'Employee';
     $d['employee'] = $this->db->get_where('employee', ['id' => $e_id])->row_array();
     $d['department_current'] = $this->db->get_where('employee_department', ['employee_id' => $e_id])->row_array();
@@ -376,57 +376,57 @@ class Master extends CI_Controller
     $this->form_validation->set_rules('d_id', 'Department', 'required|trim');
 
     if ($this->form_validation->run() == true) {
-        $name = $this->input->post('e_name');
-        $gender = $this->input->post('e_gender');
-        $birth_date = $this->input->post('e_birth_date');
-        $hire_date = $this->input->post('e_hire_date');
-        $d_id = $this->input->post('d_id');
-        $s_id = $this->input->post('s_id');
-        $image = $d['employee']['image']; // Initialize with the existing image
+      $name = $this->input->post('e_name');
+      $gender = $this->input->post('e_gender');
+      $birth_date = $this->input->post('e_birth_date');
+      $hire_date = $this->input->post('e_hire_date');
+      $d_id = $this->input->post('d_id');
+      $s_id = $this->input->post('s_id');
+      $image = $d['employee']['image']; // Initialize with the existing image
 
-        if (!empty($_FILES['image']['tmp_name'])) {
-            // Config Upload Image
-            $config['upload_path'] = './images/pp/';
-            $config['allowed_types'] = 'jpg|png|jpeg';
-            $config['max_size'] = '2048';
-            $config['file_name'] = 'item-' . date('ymd') . '-' . substr(md5(rand()), 0, 10);
+      if (!empty($_FILES['image']['tmp_name'])) {
+        // Config Upload Image
+        $config['upload_path'] = './images/pp/';
+        $config['allowed_types'] = 'jpg|png|jpeg';
+        $config['max_size'] = '2048';
+        $config['file_name'] = 'item-' . date('ymd') . '-' . substr(md5(rand()), 0, 10);
 
-            // Load library upload and pass config
-            $this->load->library('upload', $config);
+        // Load library upload and pass config
+        $this->load->library('upload', $config);
 
-            if ($this->upload->do_upload('image')) {
-                // File uploaded successfully, retrieve the uploaded file name
-                $image = $this->upload->data('file_name');
-                $old_image = $d['employee']['image'];
-                if ($old_image != 'default.png') {
-                    unlink('./images/pp/' . $old_image);
-                }
-            } else {
-                // Handle upload error
-                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">' . $this->upload->display_errors() . '</div>');
-                redirect('master/e_employee/'.$e_id);
-            }
+        if ($this->upload->do_upload('image')) {
+          // File uploaded successfully, retrieve the uploaded file name
+          $image = $this->upload->data('file_name');
+          $old_image = $d['employee']['image'];
+          if ($old_image != 'default.png') {
+            unlink('./images/pp/' . $old_image);
+          }
+        } else {
+          // Handle upload error
+          $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">' . $this->upload->display_errors() . '</div>');
+          redirect('master/e_employee/' . $e_id);
         }
+      }
 
-        $data = [
-            'name' => $name,
-            'gender' => $gender,
-            'image' => $image,
-            'birth_date' => $birth_date,
-            'hire_date' => $hire_date,
-            'shift_id' => $s_id
-        ];
-        $department = [
-            'department_id' => $d_id
-        ];
-        $this->_editEmployee($e_id, $data, $department);
+      $data = [
+        'name' => $name,
+        'gender' => $gender,
+        'image' => $image,
+        'birth_date' => $birth_date,
+        'hire_date' => $hire_date,
+        'shift_id' => $s_id
+      ];
+      $department = [
+        'department_id' => $d_id
+      ];
+      $this->_editEmployee($e_id, $data, $department);
     }
     $this->load->view('templates/header', $d);
     $this->load->view('templates/sidebar');
-    $this->load->view('templates/topbar',$dd);
+    $this->load->view('templates/topbar', $dd);
     $this->load->view('master/employee/e_employee', $d); // Edit Employee Page
     $this->load->view('templates/footer');
-}
+  }
 
   private function _editEmployee($e_id, $data, $department)
   {
@@ -472,7 +472,7 @@ class Master extends CI_Controller
 
     $this->load->view('templates/table_header', $d);
     $this->load->view('templates/sidebar');
-    $this->load->view('templates/topbar',$dd);
+    $this->load->view('templates/topbar', $dd);
     $this->load->view('master/location/index', $d);
     $this->load->view('templates/table_footer');
   }
@@ -489,7 +489,7 @@ class Master extends CI_Controller
     }
     $this->load->view('templates/header', $d);
     $this->load->view('templates/sidebar');
-    $this->load->view('templates/topbar',$dd);
+    $this->load->view('templates/topbar', $dd);
     $this->load->view('master/location/a_location', $d);
     $this->load->view('templates/footer');
   }
@@ -511,11 +511,10 @@ class Master extends CI_Controller
   public function e_location($l_id)
   {
     // Edit Location
-    $d['title'] = 'Location';
-    $d['l_old'] = $this->db->get_where('location', ['id' => $l_id])->row_array();
-    $d['account'] = $this->Admin_model->getAdmin($this->session->userdata['username']);
-    $dd['pending_leave_requests_count'] = $this->Admin_model->getPendingLeaveRequestsCount();
-
+    $data['title'] = 'Location';
+    $data['l_old'] = $this->db->get_where('location', ['id' => $l_id])->row_array();
+    $data['account'] = $this->Admin_model->getAdmin($this->session->userdata('username'));
+    $data['pending_leave_requests_count'] = $this->Admin_model->getPendingLeaveRequestsCount();
 
     // Form Validation
     $this->form_validation->set_rules('l_name', 'Location Name', 'required|trim');
@@ -524,12 +523,14 @@ class Master extends CI_Controller
       $name = $this->input->post('l_name');
       $this->_editLocation($l_id, $name);
     }
-    $this->load->view('templates/header', $d);
+
+    $this->load->view('templates/header', $data);
     $this->load->view('templates/sidebar');
-    $this->load->view('templates/topbar',$dd);
-    $this->load->view('master/Location/e_location', $d); // Edit Location Page
+    $this->load->view('templates/topbar', $data); // Passing $data instead of $dd
+    $this->load->view('master/location/e_location', $data); // Edit Location Page
     $this->load->view('templates/footer');
   }
+
   private function _editLocation($l_id, $name)
   {
     $data = ['name' => $name];
@@ -588,7 +589,7 @@ class Master extends CI_Controller
 
     $this->load->view('templates/table_header', $d);
     $this->load->view('templates/sidebar');
-    $this->load->view('templates/topbar',$dd);
+    $this->load->view('templates/topbar', $dd);
     $this->load->view('master/users/index', $d);
     $this->load->view('templates/table_footer');
   }
@@ -608,7 +609,7 @@ class Master extends CI_Controller
     if ($this->form_validation->run() == false) {
       $this->load->view('templates/header', $d);
       $this->load->view('templates/sidebar');
-      $this->load->view('templates/topbar',$dd);
+      $this->load->view('templates/topbar', $dd);
       $this->load->view('master/users/a_users', $d);
       $this->load->view('templates/footer');
     } else {
@@ -653,11 +654,11 @@ class Master extends CI_Controller
     if ($this->form_validation->run() == false) {
       $this->load->view('templates/header', $d);
       $this->load->view('templates/sidebar');
-      $this->load->view('templates/topbar',$dd);
+      $this->load->view('templates/topbar', $dd);
       $this->load->view('master/users/e_users', $d);
       $this->load->view('templates/footer');
     } else {
-      $data = ['password' => password_hash($this->input->post('password'),PASSWORD_DEFAULT)];
+      $data = ['password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT)];
       $this->_editUsers($data, $username);
     }
   }

@@ -17,7 +17,7 @@
   <?php endif; ?>
 
   <div class="card rounded-0 shadow">
-    <div class="card-header d-flex justify-content-between align-items-center bg-danger">
+    <div class="card-header d-flex justify-content-between align-items-center bg-primary">
     </div>
     <div class="card-body">
       <div class="row">
@@ -25,8 +25,8 @@
         <div class="col-sm-12 col-md-4 text-center mb-3">
           <img src="/els/images/pp/<?= $account['image']; ?>" class="rounded-circle img-thumbnail" alt="Profile Picture"
             style="width: 200px; height: 200px; border: 5px solid grey; margin-top: 30px; ">
-          <div class="card-header d-flex justify-content-between align-items-center">
-            <h3 class="card-title font-weight-bolder text-dark">
+          <div class="card-header d-flex justify-content-center align-items-center">
+            <h3 class="card-title font-weight-bolder text-black text-uppercase">
               <i class="fas fa-user mr-2"></i> <?= $account['name'] ?>
             </h3>
           </div>
